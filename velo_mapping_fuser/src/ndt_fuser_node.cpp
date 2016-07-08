@@ -28,7 +28,7 @@
 #include <std_srvs/Empty.h>
 
 #include <boost/foreach.hpp>
-#include <ndt_map/NDTMapMsg.h>
+#include <velo_mapping_map/NDTMapMsg.h>
 #include <ndt_map/ndt_conversions.h>
 
 #ifndef SYNC_FRAMES
@@ -175,7 +175,7 @@ public:
       Eigen::AngleAxis<double>(sensor_pose_p,Eigen::Vector3d::UnitY()) *
       Eigen::AngleAxis<double>(sensor_pose_t,Eigen::Vector3d::UnitZ()) ;
     
-    map_publisher_=nh_.advertise<ndt_map::NDTMapMsg>("ndt_map",1000);
+    map_publisher_=nh_.advertise<velo_mapping_map::NDTMapMsg>("ndt_map",1000);
     
     if(matchLaser) match2D=true;
     fuser = new lslgeneric::NDTFuserHMT(resolution,size_x,size_y,size_z,
@@ -463,7 +463,7 @@ public:
 public:
   // map publishing function
   bool publish_map(){
-    ndt_map::NDTMapMsg map_msg;
+    velo_mapping_map::NDTMapMsg map_msg;
     toMessage(fuser->map, map_msg,fuser_frame);
     map_publisher_.publish(map_msg);
     return true;

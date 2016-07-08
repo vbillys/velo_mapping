@@ -6,8 +6,8 @@
 #include <Eigen/Eigen>
 #include <ndt_map/ndt_map.h>
 #include <ndt_map/ndt_cell.h>
-#include <ndt_map/NDTMapMsg.h>
-#include <ndt_map/NDTCellMsg.h>
+#include <velo_mapping_map/NDTMapMsg.h>
+#include <velo_mapping_map/NDTCellMsg.h>
 #include <nav_msgs/OccupancyGrid.h>
 #include <string>
 
@@ -23,7 +23,7 @@ namespace lslgeneric{
    * @param[in] frame_name name of the coordination frame for the transformed map
    *   
    */
-  bool toMessage(NDTMap *map, ndt_map::NDTMapMsg &msg,std::string frame_name){
+  bool toMessage(NDTMap *map, velo_mapping_map::NDTMapMsg &msg,std::string frame_name){
     std::vector<lslgeneric::NDTCell*> map_vector=map->getAllInitializedCells();
     msg.header.stamp=ros::Time::now();
     msg.header.frame_id=frame_name;//is it in *map?    
@@ -41,7 +41,7 @@ namespace lslgeneric{
     }
     for (int cell_idx=0;cell_idx<map_vector.size();cell_idx++){
 	  if(map_vector[cell_idx]->hasGaussian_){ //we only send a cell with gaussian
-        ndt_map::NDTCellMsg cell;
+        velo_mapping_map::NDTCellMsg cell;
         Eigen::Vector3d means=map_vector[cell_idx]->getMean();
         cell.mean_x=means(0);
         cell.mean_y=means(1);
@@ -70,7 +70,7 @@ namespace lslgeneric{
    * @param[out] frame_name name of the coordination frame of the map
    *   
    */
-  bool fromMessage(LazyGrid* &idx, NDTMap* &map, ndt_map::NDTMapMsg msg, std::string &frame_name){
+  bool fromMessage(LazyGrid* &idx, NDTMap* &map, velo_mapping_map::NDTMapMsg msg, std::string &frame_name){
     if(!(msg.x_cell_size==msg.y_cell_size&&msg.y_cell_size==msg.z_cell_size)){ //we assume that voxels are cubes
 	  ROS_ERROR("SOMETHING HAS GONE VERY WRONG YOUR VOXELL IS NOT A CUBE"); 
 	  return false;
