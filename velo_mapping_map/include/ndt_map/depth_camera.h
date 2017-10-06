@@ -4,6 +4,7 @@
 #include <cv.h>
 #include <pcl/point_cloud.h>
 #include <iostream>
+#include <opencv2/imgproc/imgproc.hpp>
 
 namespace lslgeneric
 {
