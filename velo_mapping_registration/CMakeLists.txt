@@ -102,12 +102,15 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 # catkin_package parameters: http://ros.org/doc/groovy/api/catkin/html/dev_guide/generated_cmake_api.html#catkin-package
 # TODO: fill in what other packages will need to use this package
-#install(TARGETS simple_test ${PROJECT_NAME} 
-        #ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        #LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        #RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-       #)
-
-install(DIRECTORY include/${PROJECT_NAME}/
-	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+install(TARGETS ${PROJECT_NAME} 
+	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
        )
+
+#install(DIRECTORY include/${PROJECT_NAME}/
+	#DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+       #)
+install(DIRECTORY include/ndt_registration/
+	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+	)

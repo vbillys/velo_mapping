@@ -92,9 +92,12 @@ install(TARGETS ndt_fuser_node ${PROJECT_NAME}
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
        )
 
-install(DIRECTORY include/${PROJECT_NAME}/
+#install(DIRECTORY include/${PROJECT_NAME}/
+	#DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+       #)
+install(DIRECTORY include/ndt_fuser/
 	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-       )
+	)
 install(FILES
    launch/fuser_2dlaser.launch  
    launch/fuser_hmt_vellodyne32.launch  
@@ -102,6 +105,6 @@ install(FILES
    launch/velo32.yaml
    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
-install(DIRECTORY maps/
-	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+#install(DIRECTORY maps/
+	#DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+#)

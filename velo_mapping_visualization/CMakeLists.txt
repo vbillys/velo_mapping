@@ -80,6 +80,6 @@ install(TARGETS ndt_viewer ${PROJECT_NAME}
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
        )
 
-install(DIRECTORY include/${PROJECT_NAME}/
+install(DIRECTORY include/ndt_visualisation/
 	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
        )
